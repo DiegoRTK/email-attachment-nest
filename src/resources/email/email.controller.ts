@@ -47,7 +47,10 @@ export class EmailController {
   @ApiConsumes('multipart/form-data')
   @Post('')
   @UseInterceptors(FileInterceptor('email'))
-  create(@Body() createEmailDto: CreateEmailDto, @UploadedFile() file) {
+  create(
+    @Body() createEmailDto: CreateEmailDto,
+    @UploadedFile() file: Express.Multer.File,
+  ): simpleParser.ParsedMail {
     return this.emailService.create(file, createEmailDto.showHeaders);
   }
 }

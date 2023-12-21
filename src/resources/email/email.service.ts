@@ -6,7 +6,7 @@ export class EmailService {
   async create(
     email: Express.Multer.File,
     showHeaders: boolean,
-  ): Promise<void> {
+  ): Promise<simpleParser.ParsedMail> {
     if (!email) throw new BadRequestException('The field email is required');
     const jsonData: simpleParser.ParsedMail = {};
     try {
